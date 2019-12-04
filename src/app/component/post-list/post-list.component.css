@@ -5,8 +5,14 @@
     justify-content: center;
 }
 
-@media all and (max-width: 576px) {
+@media all and (max-width: 768px) {
     .posts {
         margin-top: 62px;
+    }
+}
+
+@media all and (max-width: 576px) {
+    .posts {
+        display: inline-block;
     }
 }
