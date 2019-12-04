@@ -4,3 +4,9 @@
     align-items: flex-start;
     justify-content: center;
 }
+
+@media all and (max-width: 576px) {
+    .posts {
+        margin-top: 62px;
+    }
+}

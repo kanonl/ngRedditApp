@@ -7,11 +7,16 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav">
-            <a href="#" [ngClass]="setClass('all')" (click)="getSubReddit('all')">all</a>
-            <a href="#" [ngClass]="setClass('games')" (click)="getSubReddit('games')">games</a>
-            <a href="#" [ngClass]="setClass('pcgaming')" (click)="getSubReddit('pcgaming')">pcgaming</a>
-            <a href="#" [ngClass]="setClass('videos')" (click)="getSubReddit('videos')">videos</a>
-            <a href="#" [ngClass]="setClass('technology')" (click)="getSubReddit('technology')">technology</a>
+            <a href="#" [ngClass]="setClass('all')" (click)="getSubReddit('all')" data-toggle="collapse"
+                data-target="#navbarSupportedContent">all</a>
+            <a href="#" [ngClass]="setClass('games')" (click)="getSubReddit('games')" data-toggle="collapse"
+                data-target="#navbarSupportedContent">games</a>
+            <a href="#" [ngClass]="setClass('pcgaming')" (click)="getSubReddit('pcgaming')" data-toggle="collapse"
+                data-target="#navbarSupportedContent">pcgaming</a>
+            <a href="#" [ngClass]="setClass('videos')" (click)="getSubReddit('videos')" data-toggle="collapse"
+                data-target="#navbarSupportedContent">videos</a>
+            <a href="#" [ngClass]="setClass('technology')" (click)="getSubReddit('technology')" data-toggle="collapse"
+                data-target="#navbarSupportedContent">technology</a>
         </div>
     </div>
 </nav>

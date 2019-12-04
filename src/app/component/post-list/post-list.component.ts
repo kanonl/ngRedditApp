@@ -18,8 +18,6 @@ export class PostListComponent implements OnInit {
     this.dataService.currentMessage.subscribe(message => {
       this.draw(message);
     });
-
-    this.draw("all");
   }
 
   draw(subreddit: string) {

@@ -1,6 +1,4 @@
 export class Post {
-    kind: string;
-    data: {
         subreddit: string;
         selftext: string;
         title: string;
@@ -20,5 +18,5 @@ export class Post {
         url: string;
         subreddit_subscribers: number;
         link_flair_text: string;
-    };
+	score: number;
 }
