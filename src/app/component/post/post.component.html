@@ -1,0 +1,14 @@
+<div class="post p-2 mr-2 mb-2">
+    <span class="badge badge-pill badge-primary">{{ post.link_flair_text }}</span>
+    <h1 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+    <ul>
+        <li>{{ post.domain}}</li>
+        <li><a class="permalink" href="https://www.reddit.com{{ post.permalink }}" target="_blank">{{ post.subreddit }}</a></li>
+        <li>{{ post.num_comments }}</li>
+        <li>{{ post.score }}</li>
+    </ul>
+    <div class="thumbnail" *ngIf="post.thumbnail.includes('.')">
+        <img src="{{ post.thumbnail }}" alt="{{ post.title }}" title="{{ post.title }}">
+    </div>
+    <div class="selftext" *ngIf="post.selftext">{{ post.selftext }}</div>
+</div>
