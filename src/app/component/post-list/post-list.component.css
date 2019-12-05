@@ -3,13 +3,31 @@
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center; */
-    column-count: 8;
+    column-count: 12;
     column-gap: 8px;
+}
+
+@media all and (max-width: 2160px) {
+    .posts {
+        column-count: 10;
+    }
+}
+
+@media all and (max-width: 1920px) {
+    .posts {
+        column-count: 8;
+    }
+}
+
+@media all and (max-width: 1440px) {
+    .posts {
+        column-count: 7;
+    }
 }
 
 @media all and (max-width: 1200px) {
     .posts {
-        column-count: 7;
+        column-count: 6;
     }
 }
 

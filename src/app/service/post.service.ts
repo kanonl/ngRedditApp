@@ -13,7 +13,7 @@ export class PostService {
     let url = new URL("https://www.reddit.com");
     url.pathname = `/r/${subreddit}/.json`;
     url.search = new URLSearchParams({
-      "limit": "50"
+      "limit": "75"
     }).toString();
     return this.http.get<any>(url.toString());
   }
