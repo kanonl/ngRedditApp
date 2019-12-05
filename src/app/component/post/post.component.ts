@@ -14,4 +14,10 @@ export class PostComponent implements OnInit {
   ngOnInit() {
   }
 
+  stickied(post: Post) {
+    return {
+      "stickied": post.stickied
+    }
+  }
+
 }

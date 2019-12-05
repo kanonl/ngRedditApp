@@ -1,9 +1,13 @@
-<div class="post p-2 mr-2 mb-2">
+<!-- <div class="post p-2 mr-2 mb-2"> -->
+<div class="post">
     <span class="badge badge-pill badge-primary">{{ post.link_flair_text }}</span>
-    <h1 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+    <h1 class="title">
+        <a href="{{ post.url }}" [ngClass]="stickied(post)" target="_blank">{{ post.title }}</a>
+    </h1>
     <ul>
         <li>{{ post.domain}}</li>
-        <li><a class="permalink" href="https://www.reddit.com{{ post.permalink }}" target="_blank">{{ post.subreddit }}</a></li>
+        <li><a class="permalink" href="https://www.reddit.com{{ post.permalink }}"
+                target="_blank">{{ post.subreddit }}</a></li>
         <li>{{ post.num_comments }}</li>
         <li>{{ post.score }}</li>
     </ul>
