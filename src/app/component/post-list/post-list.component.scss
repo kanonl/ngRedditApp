@@ -1,10 +1,7 @@
 .posts {
-    /* display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center; */
     column-count: 12;
-    column-gap: 8px;
+    column-gap: 0.5rem;
+    padding: 0.5rem;
 }
 
 @media all and (max-width: 2160px) {
@@ -46,7 +43,12 @@
 
 @media all and (max-width: 576px) {
     .posts {
-        /* display: inline-block; */
         column-count: 2;
+    }
+}
+
+@media all and (max-width: 480px) {
+    .posts {
+        column-count: 1;
     }
 }
