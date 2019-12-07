@@ -1,0 +1,19 @@
+<div class="nav-item dropdown">
+    <div *ngIf="!isLoggedIn">
+        <button class="nav-item btn" (click)="login()">Login</button>
+    </div>
+
+    <a *ngIf="isLoggedIn" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="icon_img" src="{{ icon_img }}"
+            alt="" title="{{ name }}"></a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#"><span class="name">{{ name }}</span></a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">comment karma <strong>{{ comment_karma }}</strong></a>
+        <a class="dropdown-item" href="#">link karma <strong>{{ link_karma }}</strong></a>
+        <a class="dropdown-item" href="#" hidden>{{ created_utc }}</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" data-toggle="collapse" data-target="navbarDropdown"
+            (click)="logout()">logout</a>
+    </div>
+</div>

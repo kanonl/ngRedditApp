@@ -6,17 +6,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav">
-            <a href="#" [ngClass]="setClass('all')" (click)="getSubReddit('all')" data-toggle="collapse"
-                data-target="#navbarSupportedContent">all</a>
-            <a href="#" [ngClass]="setClass('games')" (click)="getSubReddit('games')" data-toggle="collapse"
-                data-target="#navbarSupportedContent">games</a>
-            <a href="#" [ngClass]="setClass('pcgaming')" (click)="getSubReddit('pcgaming')" data-toggle="collapse"
-                data-target="#navbarSupportedContent">pcgaming</a>
-            <a href="#" [ngClass]="setClass('videos')" (click)="getSubReddit('videos')" data-toggle="collapse"
-                data-target="#navbarSupportedContent">videos</a>
-            <a href="#" [ngClass]="setClass('technology')" (click)="getSubReddit('technology')" data-toggle="collapse"
-                data-target="#navbarSupportedContent">technology</a>
+        <div class="navbar-nav" *ngFor="let subreddit of subreddits">
+            <a href="#" [ngClass]="setClass(subreddit)" (click)="getSubReddit(subreddit)" data-toggle="collapse"
+                data-target="#navbarSupportedContent">{{ subreddit }}</a>
         </div>
+        <app-login class="d-none d-md-block" (subreddits)="setSubReddits($event)"></app-login>
     </div>
 </nav>

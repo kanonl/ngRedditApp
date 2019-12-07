@@ -1,0 +1,25 @@
+$navbar-text-color: rgba(0, 0, 0, 0.5);
+
+.icon_img {
+    width: 25px;
+    margin-right: 0.5rem;
+}
+
+.dropdown-item,
+.btn {
+    font-size: 12px;
+    color: $navbar-text-color;
+}
+
+.dropdown-toggle {
+    color: $navbar-text-color;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.name {
+    font-weight: bold;
+}

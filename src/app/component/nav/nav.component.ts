@@ -7,6 +7,7 @@ import { DataService } from '../../service/data.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+  private subreddits: string[] = ["all", "games", "pcgaming", "technology", "hardware"];
   private active: string = "all";
 
   constructor(private dataService: DataService) { }
@@ -25,6 +26,10 @@ export class NavComponent implements OnInit {
   getSubReddit(subreddit: string): void {
     this.active = subreddit;
     this.dataService.sendMessage(subreddit);
+  }
+
+  setSubReddits(display_name: string[]): void {
+    this.subreddits = display_name;
   }
 
 }

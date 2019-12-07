@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './component/nav/nav.component';
 import { PostListComponent } from './component/post-list/post-list.component';
 import { PostComponent } from './component/post/post.component';
+import { LoginComponent } from './component/auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     PostListComponent,
-    PostComponent
+    PostComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
