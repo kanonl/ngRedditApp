@@ -56,10 +56,8 @@ export class LoginComponent implements OnInit {
     let menu = this.elementRef.nativeElement.querySelector(".dropdown-menu");
     menu.classList.remove("show");
 
-    // Reset default subreddits
-    this.subreddits.emit([
-      "all", "games", "pcgaming", "technology"
-    ]);
+    // Emit null to reset default subreddits
+    this.subreddits.emit(null);
   }
 
   private getState(): string {
@@ -83,7 +81,6 @@ export class LoginComponent implements OnInit {
 
     // TODO: move this to a service
     this.http.get<any>(url.toString(), httpOptions).subscribe(user => {
-      console.log(user);
       this.name = user.name;
       this.comment_karma = user.comment_karma;
       this.link_karma = user.link_karma;

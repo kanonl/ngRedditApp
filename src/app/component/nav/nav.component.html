@@ -1,15 +1,24 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="#"><i class="fab fa-reddit-square fa-lg"></i></a>
+    <a class="navbar-brand" href="#" (click)="getSubReddit('all')"><i class="fab fa-reddit-square fa-lg"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav" *ngFor="let subreddit of subreddits">
-            <a href="#" [ngClass]="setClass(subreddit)" (click)="getSubReddit(subreddit)" data-toggle="collapse"
+        <div class="navbar-nav" *ngFor="let subreddit of subreddits; let i = index">
+            <a href="#" [ngClass]="setClass(subreddit, i)" (click)="getSubReddit(subreddit)" data-toggle="collapse"
                 data-target="#navbarSupportedContent">{{ subreddit }}</a>
         </div>
+
+        <div class="nav-item dropdown d-none d-md-block" *ngIf="subreddits.length > 10">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">MORE</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <a *ngFor="let subreddit of subreddits.slice(10)" class="dropdown-item" href="#" (click)="getSubReddit(subreddit)">{{ subreddit }}</a>
+            </div>
+        </div>
+
         <app-login class="d-none d-md-block" (subreddits)="setSubReddits($event)"></app-login>
     </div>
 </nav>
