@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     const state: string = this.getState();
     sessionStorage.setItem("state", state);
     let url: URL = new URL("https://www.reddit.com");
-    url.pathname = "/api/v1/authorize";
+    url.pathname = "/api/v1/authorize.compact";
     url.search = new URLSearchParams({
       "client_id": environment.client_id,
       "response_type": "token",
