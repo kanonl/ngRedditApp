@@ -9,6 +9,7 @@ import { DataService } from '../../service/data.service';
 export class NavComponent implements OnInit {
   subreddits: string[];
   active: string = "popular";
+  navItemCount: number = 8;
 
   constructor(private dataService: DataService) { }
 
@@ -21,9 +22,9 @@ export class NavComponent implements OnInit {
       "nav-item": true,
       "nav-link": true,
       "active": item === this.active,
-      "d-none": idx >= 10,
-      "d-sm-block": idx >= 10,
-      "d-md-none": idx >= 10
+      "d-none": idx >= this.navItemCount,
+      "d-sm-block": idx >= this.navItemCount,
+      "d-md-none": idx >= this.navItemCount
     }
   }
 
