@@ -1,54 +1,13 @@
 .posts {
-    column-count: 12;
+    // column-count: 12;
+    column-width: 180px;
     column-gap: 0.5rem;
     padding: 0.5rem;
 }
 
-@media all and (max-width: 2160px) {
-    .posts {
-        column-count: 10;
-    }
-}
-
-@media all and (max-width: 1920px) {
-    .posts {
-        column-count: 8;
-    }
-}
-
-@media all and (max-width: 1440px) {
-    .posts {
-        column-count: 7;
-    }
-}
-
-@media all and (max-width: 1200px) {
-    .posts {
-        column-count: 6;
-    }
-}
-
-@media all and (max-width: 992px) {
-    .posts {
-        column-count: 5;
-    }
-}
-
 @media all and (max-width: 768px) {
     .posts {
-        column-count: 4;
+        // column-count: 4;
         margin-top: 60px;
     }
 }
-
-@media all and (max-width: 576px) {
-    .posts {
-        column-count: 2;
-    }
-}
-
-// @media all and (max-width: 480px) {
-//     .posts {
-//         column-count: 1;
-//     }
-// }
