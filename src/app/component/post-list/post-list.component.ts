@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../service/post.service';
+import { RedditService } from '../../service/reddit.service';
 import { DataService } from '../../service/data.service';
 import { Post } from '../../model/Post';
-import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-post-list',
@@ -12,7 +11,7 @@ import { Data } from '@angular/router';
 export class PostListComponent implements OnInit {
   posts: Post[];
 
-  constructor(private postService: PostService, private dataService: DataService) { }
+  constructor(private postService: RedditService, private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => {

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PostService } from './post.service';
+import { RedditService } from './reddit.service';
 
-describe('PostService', () => {
+describe('RedditService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: PostService = TestBed.get(PostService);
+    const service: RedditService = TestBed.get(RedditService);
     expect(service).toBeTruthy();
   });
 });
