@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
 
     let httpOptions = {
       headers: new HttpHeaders({
+        "User-Agent": "angular:myappprod:1.0.0 (by /u/hot_shower_expert)",
         "Authorization": `${token_type} ${access_token}`
       })
     };
@@ -102,6 +103,7 @@ export class LoginComponent implements OnInit {
 
     let httpOptions = {
       headers: new HttpHeaders({
+        "User-Agent": "angular:myappprod:1.0.0 (by /u/hot_shower_expert)",
         "Authorization": `${token_type} ${access_token}`
       })
     };
