@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, ElementRef } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RedditService } from '../../../service/reddit.service';
 import { OAuth2 } from '../../../model/Oauth2';
 import { environment } from 'src/environments/environment';
 
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   icon_img: string;
   created_utc: string;
 
-  constructor(private http: HttpClient, private elementRef: ElementRef) { }
+  constructor(private redditService: RedditService, private elementRef: ElementRef) { }
 
   ngOnInit() {
     let url: URL = new URL(window.location.href);
@@ -67,21 +67,7 @@ export class LoginComponent implements OnInit {
   }
 
   private getUser(): void {
-    let url = new URL("https://oauth.reddit.com");
-    url.pathname = "/api/v1/me";
-
-    let access_token: string = sessionStorage.getItem("access_token");
-    let token_type: string = sessionStorage.getItem("token_type");
-
-    let httpOptions = {
-      headers: new HttpHeaders({
-        "User-Agent": "angular:myappprod:1.0.0 (by /u/hot_shower_expert)",
-        "Authorization": `${token_type} ${access_token}`
-      })
-    };
-
-    // TODO: move this to a service
-    this.http.get<any>(url.toString(), httpOptions).subscribe(user => {
+    this.redditService.getUser(sessionStorage.getItem("access_token")).subscribe(user => {
       this.name = user.name;
       this.comment_karma = user.comment_karma;
       this.link_karma = user.link_karma;
@@ -94,22 +80,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  private mysubreddits() {
-    let url = new URL("https://oauth.reddit.com");
-    url.pathname = "/subreddits/mine/subscriber";
-
-    let access_token: string = sessionStorage.getItem("access_token");
-    let token_type: string = sessionStorage.getItem("token_type");
-
-    let httpOptions = {
-      headers: new HttpHeaders({
-        "User-Agent": "angular:myappprod:1.0.0 (by /u/hot_shower_expert)",
-        "Authorization": `${token_type} ${access_token}`
-      })
-    };
-
-    // TODO: move this to a service
-    this.http.get<any>(url.toString(), httpOptions).subscribe(response => {
+  private mysubreddits(): void {
+    this.redditService.getSubscribedSubreddits(sessionStorage.getItem("access_token")).subscribe(response => {
       let display_name: string[] = [];
       let subreddits = response.data.children;
       subreddits.forEach((subreddit) => {
