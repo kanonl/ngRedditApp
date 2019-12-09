@@ -8,7 +8,7 @@ import { RedditService } from '../../service/reddit.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  subreddits: string[];
+  subreddits: string[] = [];
   active: string = "popular";
   navItemCount: number = 8;
 
