@@ -11,7 +11,7 @@ import { Post } from '../../model/Post';
 export class PostListComponent implements OnInit {
   posts: Post[];
 
-  constructor(private postService: RedditService, private dataService: DataService) { }
+  constructor(private redditService: RedditService, private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => {
@@ -20,7 +20,7 @@ export class PostListComponent implements OnInit {
   }
 
   draw(subreddit: string) {
-    this.postService.getPosts(subreddit).subscribe(response => {
+    this.redditService.getPosts(subreddit).subscribe(response => {
       this.posts = response.data.children;
     });
   }

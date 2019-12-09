@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../service/data.service';
+import { RedditService } from '../../service/reddit.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,7 @@ export class NavComponent implements OnInit {
   active: string = "popular";
   navItemCount: number = 8;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private redditService: RedditService) { }
 
   ngOnInit() {
     this.initSubReddits();
@@ -41,7 +42,13 @@ export class NavComponent implements OnInit {
   }
 
   initSubReddits(): void {
-    this.subreddits = ["news", "askreddit", "pics", "funny", "videos", "worldnews", "todayilearned", "aww", "gaming", "tifu"];
+    // this.subreddits = ["news", "askreddit", "pics", "funny", "videos", "worldnews", "todayilearned", "aww", "gaming", "tifu"];
+    this.redditService.getPopularSubreddits().subscribe(listing => {
+      this.subreddits = [];
+      listing.data.children.forEach(element => {
+        this.subreddits.push(element.data.display_name);
+      });
+    });
   }
 
 }

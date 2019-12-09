@@ -37,6 +37,13 @@ export class RedditService {
     return this.http.get<any>(url.toString(), httpOptions);
   }
 
+  getPopularSubreddits(): Observable<any> {
+    let url = new URL("https://www.reddit.com");
+    url.pathname = "/subreddits/popular.json";
+
+    return this.http.get<any>(url.toString());
+  }
+
   private getHttpOptions(access_token: string): Object {
     let httpOptions: Object = {
       headers: new HttpHeaders({
