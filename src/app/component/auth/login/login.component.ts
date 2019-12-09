@@ -68,11 +68,12 @@ export class LoginComponent implements OnInit {
 
   private getUser(): void {
     this.redditService.getUser(sessionStorage.getItem("access_token")).subscribe(user => {
+      console.log(user);
       this.name = user.name;
       this.comment_karma = user.comment_karma;
       this.link_karma = user.link_karma;
       this.created_utc = new Date(user.created).toDateString();
-      this.icon_img = user.icon_img;
+      this.icon_img = user.icon_img.replace(/&amp;/g, "&");
       this.mysubreddits();
     }, error => {
       sessionStorage.clear();
