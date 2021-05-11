@@ -9,6 +9,8 @@
                 target="_blank">{{ post.subreddit }}</a></li>
         <li>{{ post.num_comments }}</li>
         <li>{{ post.score }}</li>
+        <li (click)="save(post.name)"><i class="far fa-star"></i></li>
+        <li (click)="hide(post.name)"><i class="far fa-eye-slash"></i></li>
     </ul>
     <div class="thumbnail" *ngIf="post.thumbnail.includes('.')">
         <img src="{{ post.thumbnail }}" alt="{{ post.title }}" title="{{ post.title }}">

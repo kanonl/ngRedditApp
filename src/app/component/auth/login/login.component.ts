@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   link_karma: string;
   icon_img: string;
   created_utc: string;
+  access_token: string;
+  token_type: string;
 
   constructor(private redditService: RedditService, private elementRef: ElementRef) { }
 
@@ -28,6 +30,8 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("access_token", result.access_token);
       sessionStorage.setItem("token_type", result.token_type);
       this.isLoggedIn = true;
+      this.access_token = result.access_token;
+      this.token_type = result.token_type;
       this.getUser();
     }
   }
@@ -41,7 +45,7 @@ export class LoginComponent implements OnInit {
       "client_id": environment.client_id,
       "response_type": "token",
       "redirect_uri": environment.redirect_uri,
-      "scope": "identity mysubreddits",
+      "scope": "identity mysubreddits save report history",
       "state": state
     }).toString();
 
@@ -67,7 +71,7 @@ export class LoginComponent implements OnInit {
   }
 
   private getUser(): void {
-    this.redditService.getUser(sessionStorage.getItem("access_token")).subscribe(user => {
+    this.redditService.getUser(this.access_token).subscribe(user => {
       console.log(user);
       this.name = user.name;
       this.comment_karma = user.comment_karma;
@@ -75,6 +79,8 @@ export class LoginComponent implements OnInit {
       this.created_utc = new Date(user.created).toDateString();
       this.icon_img = user.icon_img.replace(/&amp;/g, "&");
       this.mysubreddits();
+      this.getUserHides(user.name);
+      this.getUserSaves(user.name);
     }, error => {
       sessionStorage.clear();
       this.isLoggedIn = false;
@@ -82,7 +88,7 @@ export class LoginComponent implements OnInit {
   }
 
   private mysubreddits(): void {
-    this.redditService.getSubscribedSubreddits(sessionStorage.getItem("access_token")).subscribe(response => {
+    this.redditService.getSubscribedSubreddits(this.access_token).subscribe(response => {
       let display_name: string[] = [];
       let subreddits = response.data.children;
       subreddits.forEach((subreddit) => {
@@ -90,6 +96,14 @@ export class LoginComponent implements OnInit {
       });
       this.subreddits.emit(display_name);
     });
+  }
+
+  private getUserSaves(username: string): void {
+    // this.redditService.getSaveLinkOrComment(this.access_token, username).subscribe(console.log);
+  }
+
+  private getUserHides(username: string): void {
+    // this.redditService.getHideLink(this.access_token, username).subscribe(console.log);
   }
 
   private parseHash(url: URL): OAuth2 {
