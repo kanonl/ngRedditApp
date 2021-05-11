@@ -72,7 +72,6 @@ export class LoginComponent implements OnInit {
 
   private getUser(): void {
     this.redditService.getUser(this.access_token).subscribe(user => {
-      console.log(user);
       this.name = user.name;
       this.comment_karma = user.comment_karma;
       this.link_karma = user.link_karma;

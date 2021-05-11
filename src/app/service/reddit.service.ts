@@ -44,6 +44,9 @@ export class RedditService {
   getSubscribedSubreddits(access_token: string): Observable<any> {
     let url = new URL("https://oauth.reddit.com");
     url.pathname = "/subreddits/mine/subscriber";
+    url.search = new URLSearchParams({
+      "limit": "75"
+    }).toString();
 
     const httpOptions = this.getHttpOptions(access_token);
 
